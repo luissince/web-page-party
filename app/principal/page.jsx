@@ -29,7 +29,11 @@ export default async function Page() {
                             </div>
 
                             <div className='text-center'>
-                                <h6>Invitación para el cumpleaños de Rahamsis</h6>
+                                <h6>Invitación para el cumpleaños de Rahamsis</h6>                                
+                            </div>
+
+                            <div className='pt-8 pb-2 text-center'>
+                                <p className='text-base mt-4'>realiza: 08/06/2024 - 18:00</p>
                             </div>
 
                             <div className='py-8 text-center'>
