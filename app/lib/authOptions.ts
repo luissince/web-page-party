@@ -7,7 +7,7 @@ type User = {
     name?: string | null | undefined,
 }
 
- const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
     pages: {
         signIn: "/login",
     },
@@ -19,10 +19,10 @@ type User = {
             name: "Credentials",
             credentials: {
                 nombre: {},
-                celular: {}
+                email: {}
             },
-            authorize: async (credentials) => {   
-                const user = await getUser(credentials?.nombre as string , credentials?.celular as string) as any;
+            authorize: async (credentials) => {
+                const user = await getUser(credentials?.nombre as string, credentials?.email as string) as any;
                 if (user) {
                     return user;
                 }
@@ -40,6 +40,7 @@ type User = {
         jwt: async ({ token, user }) => {
             if (user) {
                 token.name = user.name;
+                token.email = user.email
             }
             return token;
         },
@@ -47,6 +48,7 @@ type User = {
             if (token) {
                 const user: User = {
                     name: token.name as string,
+                    email: token.email as string
                 }
 
                 session.user = user;

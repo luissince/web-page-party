@@ -11,7 +11,7 @@ export default class Login extends Component {
 
         this.state = {
             nombre: '',
-            celular: '',
+            email: '',
             showError: false,
             errorMessage: '',
 
@@ -19,7 +19,7 @@ export default class Login extends Component {
         };
 
         this.refTxtNombre = React.createRef();
-        this.refTxtCelular = React.createRef();
+        this.refTxtEmail = React.createRef();
     }
 
     handleAceptar = async (event) => {
@@ -32,9 +32,9 @@ export default class Login extends Component {
             return;
         }
 
-        if (isEmpty(this.state.celular)) {
+        if (isEmpty(this.state.email)) {
             this.setState({ showError: true, errorMessage: 'Por favor ingrese el celular.' }, () => {
-                this.refTxtCelular.current.focus();
+                this.refTxtEmail.current.focus();
             });
             return;
         }
@@ -46,7 +46,7 @@ export default class Login extends Component {
 
             const response = await signIn("credentials", {
                 nombre: this.state.nombre,
-                celular: this.state.celular,
+                email: this.state.email,
                 // callbackUrl: "/principal",
                 redirect: false,
             });
@@ -104,10 +104,10 @@ export default class Login extends Component {
                                 role='float'
                                 className="w-full bg-transparent border-b-[1px] border-gray-400 text-white outline-none"
                                 placeholder='Celular'
-                                ref={this.refTxtCelular}
-                                value={this.state.celular}
+                                ref={this.refTxtEmail}
+                                value={this.state.email}
                                 onChange={(event) =>
-                                    this.setState({ celular: event.target.value })
+                                    this.setState({ email: event.target.value })
                                 }
                                 onKeyDown={keyNumberFloat} />
                         </div>

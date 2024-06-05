@@ -4,7 +4,7 @@ import mysql, { Connection } from 'mysql2/promise';
 export type User = {
     id?: string;
     name: string | undefined | null;
-    celular: string | undefined | null;
+    email: string | undefined | null;
 };
 
 // Create the connection to database
@@ -31,7 +31,7 @@ export async function getUser(nombre: string, celular: string): Promise<User | n
 
         const user: User = {
             name: nombre,
-            celular: celular,
+            email: celular,
         }
 
         return user;
